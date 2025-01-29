@@ -27,8 +27,12 @@
 from django.contrib import admin
 from django.urls import path
 from my_app import views  # my_app으로 수정
+from django.urls import path, include
 
 urlpatterns = [
-    path('', views.box_office, name='box_office'),  # 루트 경로에 대해서 box_office 뷰를 호출
-    # path('box_office/', views.box_office, name='box_office'),  # 중복된 경로 제거
+    path('admin/', admin.site.urls),
+    path('box_office/',views.box_office, name='box_office'),  # 루트 경로에 대해서 box_office 뷰를 호출
+    path('trending_tv/', views.trending_tv_shows, name='trending_tv_shows'),
+    path('common/', include('common.urls')), #로그인
+    
 ]

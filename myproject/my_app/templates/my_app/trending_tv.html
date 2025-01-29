@@ -1,0 +1,25 @@
+{% extends '/Users/seeminglly/Desktop/proj/myproject/my_app/templates/base.html' %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>트렌딩 TV 시리즈</title>
+    <style>
+        /* 스타일 설정 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>트렌딩 TV 시리즈</h1>
+        <div class="tv-show-list">
+            {% for show in tv_shows %}
+                <div class="tv-show">
+                    <img src="https://image.tmdb.org/t/p/w500{{ show.poster_path }}" alt="{{ show.name }}">
+                    <div class="tv-show-title">{{ show.name }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
