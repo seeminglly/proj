@@ -1,0 +1,27 @@
+{% extends '/Users/seeminglly/proj-main/myproject/my_app/templates/base.html' %}
+
+{% block content %}
+    <h1>Trending Series</h1>
+
+    {% if tv_shows %}
+        <ul>
+        {% for show in tv_shows %}
+            <li>
+                <!-- 포스터 이미지 추가 -->
+                {% if show.poster_url %}
+                    <img src="https://image.tmdb.org/t/p/w500{{ show.poster_url }}" alt="Poster of {{ show.name }}" width="140" height="200" />
+                {% else %}
+                    <p>No poster available</p>
+                {% endif %}
+                <h2>{{ show.name }}</h2>
+                {% comment %}  줄거리 <p>{{ show.overview }}</p> {% endcomment %}
+                <p>Release Date: {{ show.first_air_date }}</p>
+
+                
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No trending TV shows available.</p>
+    {% endif %}
+{% endblock %}

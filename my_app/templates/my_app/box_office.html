@@ -1,0 +1,33 @@
+{% extends '/Users/seeminglly/proj-main/myproject/my_app/templates/base.html' %}
+{% block title %}일일 박스오피스{% endblock %}
+
+{% block content %}
+    <h1>일일 박스오피스</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>영화 제목</th>
+                <th>매출액</th>
+                <th>관객 수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in box_office_data %}
+                <tr>
+                    <td>{{ movie.rank }}</td>
+                    <td>{{ movie.movieNm }}</td>
+                    <td>{{ movie.salesAmt }}</td>
+                    <td>{{ movie.audiCnt }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>CGV 예매율 (상위 3개)</h2>
+    <ul>
+        {% for movie in movie_list|slice:":3" %}
+            <li>{{ movie.title }} - 예매율: {{ movie.reservation_rate }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
